@@ -9,46 +9,40 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
 
-    TextView tvnama1;
-    EditText txtuser;
-    EditText txtpass;
-    Button btn_login;
-
+    EditText txtusername;
+    EditText txtpassword;
+    Button btnlogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        pref = getSharedPreferences("Login", MODE_PRIVATE);
-        tvnama1 = findViewById(R.id.tvnama1);
-        txtuser = findViewById(R.id.username);
-        txtpass = findViewById(R.id.password);
-        btn_login = findViewById(R.id.btn_login);
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        pref = getSharedPreferences("login", MODE_PRIVATE);
+        txtusername = (EditText)findViewById(R.id.username);
+        txtpassword = (EditText)findViewById(R.id.password);
+        btnlogin = (Button) findViewById(R.id.btn_login);
+        btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (txtuser.getText().toString().equalsIgnoreCase("Admin")
-                        && txtpass.getText().toString().equalsIgnoreCase("Admin")){
-
+                if (txtusername.getText().toString().equalsIgnoreCase("admin")
+                        && txtpassword.getText().toString().equalsIgnoreCase("admin")){
+                    //saving ke SP
                     editor = pref.edit();
-                    editor.putString("Username", txtuser.getText().toString());
-                    editor.putString("Status","login");
+                    editor.putString("username", txtusername.getText().toString());
+                    editor.putString("status", "login");
                     editor.apply();
-
+                    //menuju ke main menu
                     startActivity(new Intent(getApplicationContext(), MainMenu.class));
                     finish();
-
-
                 }
             }
         });
-
     }
 }
