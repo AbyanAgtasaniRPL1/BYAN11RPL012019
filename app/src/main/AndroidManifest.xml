@@ -17,8 +17,10 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailMovie"></activity>
+        <activity android:name=".DetailFavorite"></activity>
+        <activity android:name=".DetailMovie"/>
         <activity android:name=".ListData" />
+        <activity android:name=".ListDataFavorite"/>
         <activity android:name=".Controlclass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
